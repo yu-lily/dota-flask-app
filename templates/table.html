@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Table</title>
+        <link rel="stylesheet" href="/static/styles.css" />
+    </head>
+    <body>
+        <table>
+            <tr>
+                {% for col in cols %}
+                    <th>{{ col['name'].replace('_', ' ').title() }}</th>
+                {% endfor %}
+            </tr>
+            {% for row in rows %}
+                <tr>
+                    {% for col in row %}
+                        <td>{{ col }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

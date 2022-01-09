@@ -21,5 +21,10 @@
                 </tr>
             {% endfor %}
         </table>
+        {% for row in rows %}
+        <tr>
+            <img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/{{row[5]}}.png" />
+        </tr>
+    {% endfor %}
     </body>
 </html>

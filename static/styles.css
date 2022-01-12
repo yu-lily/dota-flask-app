@@ -34,3 +34,8 @@ table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
 }
+
+img {
+    max-width:50;
+    max-height:50;
+  }

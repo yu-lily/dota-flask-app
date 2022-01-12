@@ -9,12 +9,14 @@
     <body>
         <table>
             <tr>
+                <th>Image</th>
                 {% for col in cols %}
                     <th>{{ col['name'].replace('_', ' ').title() }}</th>
                 {% endfor %}
             </tr>
             {% for row in rows %}
                 <tr>
+                    <td><img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/{{row[-1]}}.png" /></td>
                     {% for col in row %}
                         <td>{{ col }}</td>
                     {% endfor %}
@@ -22,9 +24,7 @@
             {% endfor %}
         </table>
         {% for row in rows %}
-        <tr>
-            <img src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/{{row[5]}}.png" />
-        </tr>
-    {% endfor %}
+
+        {% endfor %}
     </body>
 </html>

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}Aghanim's Labyrinth{% endblock %}
+
+{% block nav_aghs %}active{% endblock %}
+
+{% block body %}
+<div class="container-xxl my-md-4 bd-layout">
+    <div class="heroes">
+        {% for attribute in heroes.keys() %}
+        <div class="hero-attribute-section">
+            <div class="attribute-heading">{{attribute}}</div>
+            <div class="hero-section">
+            {% for hero in heroes[attribute] %}
+                <a href=hero/{{hero}}>
+                    <div class="hero">
+                        <img src="https://cdn.stratz.com/images/dota2/heroes/{{hero}}_vert.png" class="hero-icon">
+                    </div>
+                </a>
+            {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

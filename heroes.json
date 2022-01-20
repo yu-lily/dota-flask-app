@@ -1,0 +1,37 @@
+{
+    "Strength": [
+        "dawnbreaker",
+        "kunkka",
+        "magnataur",
+        "mars",
+        "omniknight",
+        "phoenix",
+        "sand_king",
+        "snapfire",
+        "tusk",
+        "undying"
+    ],
+    "Agility": [
+        "clinkz",
+        "drow_ranger",
+        "gyrocopter",
+        "juggernaut",
+        "luna",
+        "slark",
+        "sniper",
+        "templar_assassin",
+        "ursa",
+        "viper",
+        "weaver"
+    ],
+    "Intelligence": [
+        "bane",
+        "disruptor",
+        "lich",
+        "lina",
+        "queenofpain",
+        "void_spirit",
+        "winter_wyvern",
+        "witch_doctor"
+    ]
+}

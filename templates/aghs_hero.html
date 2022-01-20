@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block title %}{{hero_name.replace('_', ' ').title()}}{% endblock %}
+
+{% block nav_aghs %}active{% endblock %}
+{% block body %}
+
+    <a href="?time=all"><button>All games</button></a><a href="?time=3days"><button>Last 3 days</button></a>
+    <table class="display" id="ability_table">
+        <thead>
+            <tr>
+                <th>Icon</th>
+                {% for col in cols[1:] %}
+                    <th>{{ col['name'].replace('_', ' ').title() }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        {% for row in rows %}
+            <tr>
+                <td><img class="ability" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/{{row[0]}}.png" /></td>
+                {% for col in row[1:] %}
+                    <td>{{ col|safe }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    {% for row in rows %}
+
+    {% endfor %}
+
+    <script>
+        function bold(text){
+            const bold = /\*\*(.*?)\*\*/gm;
+            let html = text.replace(bold, '<strong>$1</strong>');            
+            return html;
+        }
+        
+
+        let table = new DataTable('#ability_table', {
+            ordering: true,
+            searching: false,
+            paging: false,
+            order: [[ 3, "desc" ]]
+        });
+    </script>
+{% endblock %}

@@ -8,7 +8,7 @@
     <div class="heroes">
         {% for attribute in heroes.keys() %}
         <div class="hero-attribute-section">
-            <div class="attribute-heading">{{attribute}}</div>
+            <div class="attribute-heading h5">{{ attribute }}</div>
             <div class="hero-section">
             {% for hero in heroes[attribute] %}
                 <a href=hero/{{hero}}>

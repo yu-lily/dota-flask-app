@@ -1,17 +1,33 @@
 {% extends "layout.html" %}
-{% block title %}{{hero_name.replace('_', ' ').title()}}{% endblock %}
+{% block title %}{{ hero_info['displayname'] }}{% endblock %}
 
 {% block nav_aghs %}active{% endblock %}
 {% block body %}
-
-    <a href="?time=all"><button>All games</button></a><a href="?time=3days"><button>Last 3 days</button></a>
-    <table class="display" id="ability_table">
+    <div class="container my-2">
+        <p class="h1 d-flex justify-content-center">{{ hero_info['displayname'] }}</p>
+        <div class="row">
+            <div class="col-6 d-flex justify-content-center"><p class="lead">Times picked: <strong>{{ hero_info['times_chosen'] }}</strong></p></div>
+            <div class="col-6 d-flex justify-content-center"><p class="lead">Winrate: <strong>{{ hero_info['rounded_winrate'] }}</strong></p></div>
+            
+        </div>
+    </div>
+    <div class="container">
+      <ul class="pagination pagination-sm">
+        <li class="page-item {{'active' if active_page == 'all' }}"><a class="page-link" href="?time=all">All games</a></li>
+        <li class="page-item {{'active' if active_page == 'prepatch' }}"><a class="page-link" href="?time=prepatch">Pre-patch</a></li>
+        <li class="page-item {{'active' if active_page == 'postpatch' }}"><a class="page-link" href="?time=postpatch">Post-patch</a></li>
+        <li class="page-item {{'active' if active_page == '3days' }}"><a class="page-link" href="?time=3days">Last 3 days</a></li>
+        <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
+      </ul>
+    </div>
+    <table class="table table-striped" id="ability_table">
         <thead>
             <tr>
                 <th>Icon</th>
-                {% for col in cols[1:] %}
+                {% for col in cols[1:-1] %}
                     <th>{{ col['name'].replace('_', ' ').title() }}</th>
                 {% endfor %}
+                <th data-bs-toggle="tooltip" data-bs-placement="top" title="Average match duration (only victories counted)"><div class="tooltip-text">Speed</div></th>
             </tr>
         </thead>
         {% for row in rows %}
@@ -33,13 +49,18 @@
             let html = text.replace(bold, '<strong>$1</strong>');            
             return html;
         }
-        
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
 
         let table = new DataTable('#ability_table', {
             ordering: true,
             searching: false,
             paging: false,
-            order: [[ 3, "desc" ]]
+            order: [[ 3, "desc" ]],
+            info: false,
+            responsive: true
         });
     </script>
 {% endblock %}

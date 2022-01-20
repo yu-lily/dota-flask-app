@@ -41,3 +41,8 @@
 strong{
     color: #585858
 }
+
+.tooltip-text{
+    border-bottom: 1px dotted #999;
+    text-decoration: none;
+}

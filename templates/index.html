@@ -3,4 +3,19 @@
 
 {% block nav_home %}active{% endblock %}
 
-{% block body %}{{num_matches[0][0]}}{% endblock %}
+{% block body %}
+<div class="container my-2">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center"><p class="display-5">Current Aghanim's Labyrinth matches dataset size: </p></div>
+        <div class="col-12 d-flex justify-content-center"><p class="display-5"><strong>{{ match_counts['total'] }} matches</strong></p></div>
+    </div>
+    <div class="row">
+        <div class="col-4 d-flex justify-content-center"><p class="lead">Pre-patch: <strong>{{ match_counts['prepatch'] }}</strong></p></div>
+        <div class="col-4 d-flex justify-content-center"><p class="lead">Post-patch: <strong>{{ match_counts['postpatch'] }}</strong></p></div>
+        <div class="col-4 d-flex justify-content-center"><p class="lead">Last 3 days: <strong>{{ match_counts['3d'] }}</strong></p></div>
+        
+        
+    </div>
+</div>
+
+{% endblock %}

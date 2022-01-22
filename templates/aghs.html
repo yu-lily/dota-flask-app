@@ -9,17 +9,17 @@
         {% for attribute in heroes.keys() %}
         <div class="hero-attribute-section">
             <div class="attribute-heading h5">{{ attribute }}</div>
-            <div class="hero-section">
+            <div class="row container">
             {% for hero in heroes[attribute] %}
-                <a href=hero/{{hero}}>
-                    <div class="hero">
-                        <img src="https://cdn.stratz.com/images/dota2/heroes/{{hero}}_vert.png" class="hero-icon">
-                    </div>
-                </a>
+                <div class="col-1">
+                    <a href=hero/{{hero}}>
+                        <img src="https://steamcdn-a.akamaihd.net/apps/dota2/images/heroes/{{hero}}_selection.png" onerror="this.onerror=null;this.src='/static/{{hero}}.png';" class="">
+                    </a>
+                </div>
             {% endfor %}
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
-{% endblock %}
+{% endblock %}  

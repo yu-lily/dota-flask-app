@@ -24,7 +24,7 @@
         <thead>
             <tr>
                 <th>Icon</th>
-                {% for col in cols[1:-1] %}
+                {% for col in cols[2:-1] %}
                     <th>{{ col['name'].replace('_', ' ').title() }}</th>
                 {% endfor %}
                 <th data-bs-toggle="tooltip" data-bs-placement="top" title="Average match duration (only victories counted)"><div class="tooltip-text">Speed</div></th>
@@ -32,8 +32,8 @@
         </thead>
         {% for row in rows %}
             <tr>
-                <td><img class="ability" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/{{row[0]}}.png" /></td>
-                {% for col in row[1:] %}
+                <td><img class="ability" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/abilities/{{row[1]}}.png" /></td>
+                {% for col in row[2:] %}
                     <td>{{ col|safe }}</td>
                 {% endfor %}
             </tr>

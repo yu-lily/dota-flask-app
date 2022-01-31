@@ -28,6 +28,18 @@
 
           gtag('config', 'G-L3WQXHY62E');
         </script>
+
+        <!-- chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+
+        <!-- Google charts -->
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <!-- cal-heatmap -->
+        <script type="text/javascript" src="//d3js.org/d3.v3.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+
         {% endblock %}
 
     </head>
@@ -36,20 +48,20 @@
         <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="/">dota.science</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                  <a class="nav-link {% block nav_home %}{% endblock %}" aria-current="page" href="/">Home</a>
-                  <a class="nav-link {% block nav_aghs %}{% endblock %}" href="/aghs">Aghanim's Labyrinth</a>
-                  <a class="nav-link {% block nav_about %}{% endblock %}" href="/about">About</a>
-                  <a class="nav-link {% block nav_contact %}{% endblock %}" href="/contact">Contact</a>
+                <a class="navbar-brand" href="/">dota.science</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                    <a class="nav-link {% block nav_home %}{% endblock %}" aria-current="page" href="/">Home</a>
+                    <a class="nav-link {% block nav_aghs %}{% endblock %}" href="/aghs">Aghanim's Labyrinth</a>
+                    <a class="nav-link {% block nav_about %}{% endblock %}" href="/about">About</a>
+                    <a class="nav-link {% block nav_contact %}{% endblock %}" href="/contact">Contact</a>
+                    </div>
                 </div>
-              </div>
             </div>
-          </nav>
+        </nav>
         </header>
         {% endblock %}
         <main>
@@ -58,7 +70,7 @@
             </div>
         </main>
         <footer class="footer mt-auto py-3 bg-light">
-          <div class="container"><a href="/contact" class="text-muted">Report a bug</a></div>
+            <div class="container"><a href="/contact" class="text-muted">Report a bug</a></div>
         </footer>
     </body>
 </html>

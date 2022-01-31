@@ -66,10 +66,18 @@ def contact():
     return render_template("contact.html")
 
 
+@cache.memoize(timeout=60)
+def get_hero_table(table_name):
+    cur.execute(f"SELECT shortname, displayname, times_chosen, rounded_winrate, rounded_avg_depth FROM {table_name} ORDER BY times_chosen DESC;")
+    conn.commit()
+    return cur.description, cur.fetchall()
+
 @app.route("/aghs/")
 def aghs_index():
-    return render_template("aghs.html", heroes=heroes)
-
+    cols, rows = get_hero_table('heroagg')
+    print(cols)
+    print(rows)
+    return render_template("aghs/index.html", heroes=heroes, cols=cols, rows=rows)
 
 
 @cache.memoize(timeout=60)
@@ -82,7 +90,6 @@ def get_ability_data(table_name, hero_name):
 def get_hero_data(table_name, hero_name):
     dict_cur.execute(f"SELECT * FROM {table_name} WHERE shortname LIKE '{hero_name}' LIMIT 100;")
     conn.commit()
-
     return dict_cur.fetchone()
 
 @app.route(f"/aghs/hero/<hero_name>")
@@ -109,5 +116,16 @@ def hero_table(hero_name):
 
     cols, rows = get_ability_data(ab_table, hero_name)
 
-    return render_template("aghs_hero.html", cols=cols, rows=rows, hero_info=hero_info, active_page=time_window)
+    return render_template("aghs/hero.html", cols=cols, rows=rows, hero_info=hero_info, active_page=time_window)
 
+
+
+@cache.memoize(timeout=60)
+def get_aghs_data():
+    with open("./static/window_log.json") as f:
+        return json.load(f)
+    
+
+@app.route("/aghs/data/")
+def aghs_data():
+    return render_template("aghs/data.html", aghs_data=get_aghs_data())

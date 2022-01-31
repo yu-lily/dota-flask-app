@@ -1,36 +1,32 @@
-.hero-icon{
-    object-fit: cover;
-    pointer-events: none;
-    border-radius: inherit;
-    position: absolute;
-    border: none;
-    margin: 0;
-    padding: 0;
-    font: inherit;
-    height: 100%;
-    width: 100%;
+.hero-container{
+    margin: auto;
+    white-space: nowrap;
 }
-
 .hero{
     display: block;
-    width: 42px;
-    height: 60px;
-    cursor: pointer;
-    overflow: visible;
-    background: rgb(20, 20, 20);
-    -webkit-box-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    align-items: center;
+    padding: 6px;
     position: relative;
-    font-size: 11px;
+    white-space: nowrap;
+    width: 60px;
+    height: 105px;
+    aspect-ratio: 4/7;
 }
-.hero-section{
-    -webkit-box-flex: 1;
-    flex-grow: 1;
-    display: grid;
-    gap: 8px;
-    grid-template-columns: repeat(auto-fill, 42px);
+
+.hero-icon{
+    aspect-ratio: 4/7;
+    width: 53px;
+    height: 93px;
+    object-fit: cover;
+}
+
+.attribute-heading{
+    letter-spacing: 0.07em;
+    color: #585858;
+}
+
+.attribute-icon{
+    width:32px;
+    height:32px;
 }
 
 .ability{
@@ -45,4 +41,9 @@ strong{
 .tooltip-text{
     border-bottom: 1px dotted #999;
     text-decoration: none;
+}
+
+.rank{
+    font-size: 0.7em;
+    color: #585858;
 }

@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+{% block title %}Aghanim's Labyrinth{% endblock %}
+
+{% block nav_aghs %}active{% endblock %}
+
+{% block body %}
+<div class="container my-md-3 bd-layout row">
+    <div class="col"></div>
+    <div class="col-8">
+        {% for attribute in heroes.keys() %}
+        <div class="hero-attribute-section row">
+            <div class="attribute-heading mt-4 mb-0 h5 ps-0"><img class="attribute-icon me-2" src="/static/img/{{ attribute[:3].lower()}}.png">{{ attribute.upper() }}</div>
+            <div class="row container">
+            {% for hero in heroes[attribute] %}
+                <div class="hero" >
+                    <a href=hero/{{hero}}>
+                        <img class="hero-icon" src="https://steamcdn-a.akamaihd.net/apps/dota2/images/heroes/{{hero}}_selection.png" onerror="this.onerror=null;this.src='/static/img/{{hero}}.png';">
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="col"></div>
+
+    <table class="table table-striped" id="hero_table">
+        <thead>
+            <tr>
+                {% for col in cols[1:] %}
+                    <th>{{ col['name'].replace('_', ' ').title() }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        {% for row in rows %}
+            <tr>
+                {% for col in row[1:] %}
+                    <td>{{ col }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    <canvas id="heroChart" width="400" height="400"></canvas>
+    <canvas id="heroChart2" width="400" height="400"></canvas>
+    <script>
+        let table = new DataTable('#hero_table', {
+            ordering: true,
+            searching: false,
+            paging: false,
+            order: [[ 1, "desc" ]],
+            info: false,
+            responsive: true
+        });
+
+        const ctx = document.getElementById('heroChart');
+        const heroChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [{% for row in rows %}
+                        "{{ row[1] }}",
+                        {% endfor %}],
+                datasets: [{
+                    label: '# of Picks',
+                    data: [{% for row in rows %}
+                        "{{ row[2] }}",
+                        {% endfor %}],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        const ctx2 = document.getElementById('heroChart2');
+        const heroChart2 = new Chart(ctx2, {
+            type: 'scatter',
+            data: {
+                labels: [{% for row in rows %}
+                        "{{ row[1] }}",
+                        {% endfor %}],
+                datasets: [{
+                    label: '# of Picks',
+                    data: [{% for row in rows %}
+                        {
+                        x:"{{ row[2] }}",
+                        y:"{{ row[3] }}",
+                        status:"{{ row[1] }}"
+                        },
+                        {% endfor %}],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+{% endblock %}  

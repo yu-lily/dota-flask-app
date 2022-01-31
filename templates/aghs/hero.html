@@ -6,9 +6,15 @@
     <div class="container my-2">
         <p class="h1 d-flex justify-content-center">{{ hero_info['displayname'] }}</p>
         <div class="row">
-            <div class="col-6 d-flex justify-content-center"><p class="lead">Times picked: <strong>{{ hero_info['times_chosen'] }}</strong></p></div>
-            <div class="col-6 d-flex justify-content-center"><p class="lead">Winrate: <strong>{{ hero_info['rounded_winrate'] }}</strong></p></div>
-            
+            <div class="col-4 d-flex justify-content-center"><p class="lead">
+                Times picked: <strong>{{ hero_info['times_chosen'] }}</strong><span class="rank"> Rank: {{ hero_info['popularity_rank'] }}/29</span>
+            </p></div>
+            <div class="col-4 d-flex justify-content-center"><p class="lead">
+                Winrate: <strong>{{ hero_info['rounded_winrate'] }}</strong><span class="rank"> Rank: {{ hero_info['wr_rank'] }}/29</span>
+            </p></div>
+            <div class="col-4 d-flex justify-content-center"><p class="lead">
+                Avg. depth rached: <strong>{{ hero_info['rounded_avg_depth'] }}</strong><span class="rank"> Rank: {{ hero_info['depth_rank'] }}/29</span>
+            </p></div>
         </div>
     </div>
     <div class="container">
@@ -39,9 +45,6 @@
             </tr>
         {% endfor %}
     </table>
-    {% for row in rows %}
-
-    {% endfor %}
 
     <script>
         function bold(text){
